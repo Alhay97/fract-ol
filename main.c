@@ -21,16 +21,34 @@ void	alhai_mlx_pixel_put(t_data *data, int x, int y, int color)
 int main(void)
 {
 	void *alhai;
+	int i;
+	int j;
+	int k;
+	int b;
+	int a;
 	void *alhai_win;
 	t_data	img;
 
 	alhai = mlx_init();
+	i = 1;
+	j = 1;
 	alhai_win = mlx_new_window(alhai, 1920,1080, "Hello alhai"); //open a window
 	img.img = mlx_new_image(alhai, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
-	alhai_mlx_pixel_put(&img, 100000, 1000000, 0x00FF01200);
-	mlx_put_image_to_window(alhai,alhai_win, img.img ,0,0);
+	i = 1;
+	j = 1;
+	while(i < 1000 && j< 1000)
+		alhai_mlx_pixel_put(&img, i++, j++, 0x00FF0000);
+	k = 0;
+	b = 1000;
+	while (k < 1000 && b >= 1)
+		alhai_mlx_pixel_put(&img, k++,b--, 0x003366FF);
+	a = 0;
+	while (a < 1000)
+		alhai_mlx_pixel_put(&img,a++,500,0x00FFFFFF);
+
+	mlx_put_image_to_window(alhai, alhai_win, img.img, 0, 0);
 	mlx_loop(alhai);
 }
 // int main(void)

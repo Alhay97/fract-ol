@@ -8,7 +8,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -Ofast
 
 %.o : %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) -g -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 $(NAME) : $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORK) -o $(NAME)
