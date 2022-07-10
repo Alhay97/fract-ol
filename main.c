@@ -1,4 +1,6 @@
 #include "minilibx/mlx.h"
+#include <math.h>
+
 
 typedef struct	s_data
 {
@@ -40,13 +42,36 @@ int main(void)
 	j = 1;
 	while(i < 1000 && j< 1000)
 		alhai_mlx_pixel_put(&img, i++, j++, 0x00FF0000);
-	k = 0;
+	k = 1;
 	b = 1000;
-	while (k < 1000 && b >= 1)
+	while (k > 0 && b > 0)
 		alhai_mlx_pixel_put(&img, k++,b--, 0x003366FF);
 	a = 0;
 	while (a < 1000)
-		alhai_mlx_pixel_put(&img,a++,500,0x00FFFFFF);
+		alhai_mlx_pixel_put(&img,a++,1000,0x00FFFFFF);
+
+	i = 1000;
+	while (i > 0)
+		alhai_mlx_pixel_put(&img, 1000, i--,0x00999900);
+	j = 1000;
+	while (j > 0)
+		alhai_mlx_pixel_put(&img, j--, 1,0x00FFFF00);
+	a = 1000;
+	while (a > 0)
+		alhai_mlx_pixel_put(&img,1,a--,0x00FFFFFF);
+
+	double x = 0;
+	double y = 0;
+	while (x < 100)
+	{
+		y = sqrt(pow(100, 2) -pow(x, 2));
+		alhai_mlx_pixel_put(&img, 500 + x, 500 + y, 0x00FF0000);
+		alhai_mlx_pixel_put(&img, 500 - x, 500 - y, 0x00FF0000);
+		alhai_mlx_pixel_put(&img, 500 - x, 500 + y, 0x00FF0000);
+		alhai_mlx_pixel_put(&img, 500 + x, 500 - y, 0x00FF0000);
+		x++;
+	}
+
 
 	mlx_put_image_to_window(alhai, alhai_win, img.img, 0, 0);
 	mlx_loop(alhai);
