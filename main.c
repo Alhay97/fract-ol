@@ -1,6 +1,7 @@
 #include "minilibx/mlx.h"
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 
 typedef struct	s_data
@@ -13,8 +14,6 @@ typedef struct	s_data
 }	t_data;
 
 
-
-#include <math.h>
 
 int	hue_to_rgb(int h)
 {
@@ -69,6 +68,33 @@ int	hue_to_rgb(int h)
 		| ((int)(b * 255)));
 }
 
+size_t	ft_strlen(const char *str)
+{
+	int	c;
+
+	c = 0;
+	if (!str)
+		return (0);
+	while (str[c] != '\0')
+	{
+		c++;
+	}
+	return (c);
+}
+
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n - 1 && s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+}
+
 void	alhai_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char *dst;
@@ -79,6 +105,8 @@ void	alhai_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int jul(int i, int j)
 {
+	int w = 1080;
+	int h = 1080;
 	double x =  (i / (w * 1.0))* (4.0) - 2.0;
 	double y =  (j / (h * 1.0))* (4.0) - 2.0;
 	double x0 = 0.0;
@@ -114,7 +142,7 @@ int mand(int i, int j)
 		x = xtemp;
 		iteration = iteration + 1;
 	}
-	return (iteration)
+	return (iteration);
 
 }
 
@@ -124,9 +152,23 @@ int main(int ac, char **av)
 	int		i;
 	int		j;
 	void	*alhai_win;
+	int w = 1080;
+	int h = 1080;
 	t_data	img;
 	int iteration = 0;
 	int max_iteration = 70;
+
+	if (!ft_strncmp(av[1],"mandelbrot",ft_strlen(av[1])))
+	{
+		mand(0,0);
+	}
+	else if (!ft_strncmp(av[1],"julie",ft_strlen(av[1])))
+	{
+		jul(0,0);
+	}
+	
+	else
+		exit(1);
 
 	alhai = mlx_init();
 	i = 1;
@@ -140,7 +182,10 @@ int main(int ac, char **av)
 		j = 0;
 		while (j < h)
 		{
-			iteration = mand(i, j);
+			if (!ft_strncmp(av[1],"mandelbrot",ft_strlen(av[1])))
+				iteration = mand(i,j);
+			else if (!ft_strncmp(av[1],"julie",ft_strlen(av[1])))
+				iteration = jul(i,j);
 			if (iteration == max_iteration)
 				alhai_mlx_pixel_put(&img,i,j++,0);
 			else
