@@ -77,63 +77,56 @@ void	alhai_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// int main(void)
-// {
-// 	void	*alhai;
-// 	int		i;
-// 	int		j;
-// 	int		w = 1080;
-// 	int		h = 1080;
-// 	void	*alhai_win;
-// 	t_data	img;
+int jul(int i, int j)
+{
+	double x =  (i / (w * 1.0))* (4.0) - 2.0;
+	double y =  (j / (h * 1.0))* (4.0) - 2.0;
+	double x0 = 0.0;
+	double y0 = -1.0;
+	int iteration = 0;
+	int max_iteration = 70;
 
-// 	alhai = mlx_init();
-// 	i = 1;
-// 	alhai_win = mlx_new_window(alhai, w,h, "Hello alhai");
-// 	img.img = mlx_new_image(alhai, w, h);
-// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-// 			&img.endian);
-// 	while (i  < w)
-// 	{
-// 		j = 0;
-// 		while (j < h)
-// 		{
-// 			double x0 =  (i / (w * 1.0))* (4.0) - 2.0;
-// 			double y0 =  (j / (h * 1.0))* (4.0) - 2.0;
-// 		    double x = 0.0;
-// 		    double y = 0.0;
-// 		    int iteration = 0;
-// 		    int max_iteration = 70;
-		    
-// 		    while (x*x + y*y <= 2*2 && iteration < max_iteration)
-// 		    {
-// 		        double xtemp = x*x - y*y + x0;
-// 		        y = 2*x*y + y0;
-// 		        x = xtemp;
-// 		        iteration = iteration + 1;
-// 		    }
-// 			if (iteration == max_iteration)
-// 				alhai_mlx_pixel_put(&img,i,j++,0);
-// 			else
-// 				alhai_mlx_pixel_put(&img,i,j++,hue_to_rgb(((double)iteration/max_iteration)*360));
-// 		    // printf("%d %f %f %f %f %d %d \n", iteration, x0,y0,x,y, i, j);
-// 		    j++;
-// 		}
-// 		i++;
-// 	}
-// 	mlx_put_image_to_window(alhai, alhai_win, img.img, 0, 0);
-// 	mlx_loop(alhai);
-// }
+	while (x*x + y*y <= 2*2 && iteration < max_iteration)
+	{
+		double xtemp = x*x - y*y + x0;
+		y = 2*x*y + y0;
+		x = xtemp;
+		iteration = iteration + 1;
+	}
+	return (iteration);
+}
 
-int main(void)
+int mand(int i, int j)
+{
+	int w = 1080;
+	int h = 1080;
+	double x0 =  (i / (w * 1.0))* (4.0) - 2.0;
+	double y0 =  (j / (h * 1.0))* (4.0) - 2.0;
+	double x = 0.0;
+	double y = 0.0;
+	int iteration = 0;
+	int max_iteration = 70;
+
+	while (x*x + y*y <= 2*2 && iteration < max_iteration)
+	{
+		double xtemp = x*x - y*y + x0;
+		y = 2*x*y + y0;
+		x = xtemp;
+		iteration = iteration + 1;
+	}
+	return (iteration)
+
+}
+
+int main(int ac, char **av)
 {
 	void	*alhai;
 	int		i;
 	int		j;
-	int		w = 1080;
-	int		h = 1080;
 	void	*alhai_win;
 	t_data	img;
+	int iteration = 0;
+	int max_iteration = 70;
 
 	alhai = mlx_init();
 	i = 1;
@@ -141,30 +134,17 @@ int main(void)
 	img.img = mlx_new_image(alhai, w, h);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
+
 	while (i  < w)
 	{
 		j = 0;
 		while (j < h)
 		{
-			double x =  (i / (w * 1.0))* (4.0) - 2.0;
-			double y =  (j / (h * 1.0))* (4.0) - 2.0;
-		    double x0 = 0.0;
-		    double y0 = -1.0;
-		    int iteration = 0;
-		    int max_iteration = 70;
-		    
-		    while (x*x + y*y <= 2*2 && iteration < max_iteration)
-		    {
-		        double xtemp = x*x - y*y + x0;
-		        y = 2*x*y + y0;
-		        x = xtemp;
-		        iteration = iteration + 1;
-		    }
+			iteration = mand(i, j);
 			if (iteration == max_iteration)
 				alhai_mlx_pixel_put(&img,i,j++,0);
 			else
 				alhai_mlx_pixel_put(&img,i,j++,hue_to_rgb(((double)iteration/max_iteration)*360));
-		    // printf("%d %f %f %f %f %d %d \n", iteration, x0,y0,x,y, i, j);
 		    j++;
 		}
 		i++;
