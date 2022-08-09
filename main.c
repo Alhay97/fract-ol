@@ -1,4 +1,5 @@
 #include "minilibx/mlx.h"
+#include <stdio.h>
 #include <math.h>
 
 
@@ -11,6 +12,25 @@ typedef struct	s_data
 	int		endian;
 }	t_data;
 
+int	get_tr(int trgb)
+{
+	return ((trgb >> 24) & 0xFF);
+}
+
+int	get_red(int trgb)
+{
+	return ((trgb >> 16) & 0xFF);
+}
+
+int	get_green(int trgb)
+{
+	return ((trgb >> 8) & 0xFF);
+}
+int	 get_blue(int trgb)
+{
+	return (trgb & 0xFF);
+}
+
 
 void	alhai_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -22,76 +42,45 @@ void	alhai_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main(void)
 {
-	void *alhai;
-	int i;
-	int j;
-	int k;
-	int a;
-	void *alhai_win;
+	void	*alhai;
+	int		i;
+	int		j;
+	int		w = 1920;
+	int		h = 1080;
+	void	*alhai_win;
 	t_data	img;
 
 	alhai = mlx_init();
 	i = 1;
-	j = 1;
-	alhai_win = mlx_new_window(alhai, 1920,1080, "Hello alhai"); //open a window
-	img.img = mlx_new_image(alhai, 1920, 1080);
+	alhai_win = mlx_new_window(alhai, w,h, "Hello alhai");
+	img.img = mlx_new_image(alhai, w, h);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
-
-
-	int b = 0;
-	int w = 0;
-	while(b < 1000)
+	while (i  < w)
 	{
-		w = 0;
-		while(w < 1000)
-			alhai_mlx_pixel_put(&img, b, w++, 0x00FFFF66);
-		b++;
-	} 
-	i = 1;
-	j = 1;
-	while(i < 1000 && j< 1000)
-		alhai_mlx_pixel_put(&img, i++, j++, 0x0066FF99);
-	k = 1;
-	b = 1000;
-	while (k > 0 && b > 0)
-		alhai_mlx_pixel_put(&img, k++,b--, 0x003366FF);
-	a = 0;
-	while (a < 1000)
-		alhai_mlx_pixel_put(&img,a++,1000,0x00FFFFFF);
-
-	i = 1000;
-	while (i > 0)
-		alhai_mlx_pixel_put(&img, 1000, i--,0x00999900);
-	j = 1000;
-	while (j > 0)
-		alhai_mlx_pixel_put(&img, j--, 1,0x0066FF99);
-	a = 1000;		
-
-	double x = 0;
-	double y = 0;
-	while (x < 100)
-	{
-		y = sqrt(pow(100, 2) -pow(x, 2));
-		alhai_mlx_pixel_put(&img, 500 + x, 500 + y, 0x00FFCC00);
-		alhai_mlx_pixel_put(&img, 500 - x, 500 - y, 0x0099FFFF);
-		alhai_mlx_pixel_put(&img, 500 - x, 500 + y, 0x006666FF);
-		alhai_mlx_pixel_put(&img, 500 + x, 500 - y, 0x00999900);
-		x++;
+		j = 0;
+		while (j < h)
+		{
+			double x0 =  (i / (w * 1.0))* (4.0) - 2.0;
+			double y0 =  (j / (h * 1.0))* (4.0) - 2.0;
+		    double x = 0.0;
+		    double y = 0.0;
+		    int iteration = 0;
+		    int max_iteration = 1000;
+		    
+		    while (x*x + y*y <= 2*2 && iteration < max_iteration)
+		    {
+		        double xtemp = x*x - y*y + x0;
+		        y = 2*x*y + y0;
+		        x = xtemp;
+		        iteration = iteration + 1;
+		    }
+			alhai_mlx_pixel_put(&img,i,j++,iteration);
+		    // printf("%d %f %f %f %f %d %d \n", iteration, x0,y0,x,y, i, j);
+		    j++;
+		}
+		i++;
 	}
-
-
 	mlx_put_image_to_window(alhai, alhai_win, img.img, 0, 0);
 	mlx_loop(alhai);
 }
-// int main(void)
-// {
-// 	void *alhai;
-// 	void *alhai_win;
-// void *alhai_image;
-
-// 	alhai = mlx_init();
-// 	alhai_image = mlx_new_image(alhai,1920, 1080); //creates an image
-// 	alhai_win = mlx_new_window(alhai, 1920,1080, "Hello alhai"); //open a window
-// 	mlx_loop(alhai);
-// }
