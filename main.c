@@ -146,6 +146,19 @@ int mand(int i, int j)
 
 }
 
+int close (int keycode)
+{
+	void *mlx;
+	void *wind;
+	if (keycode == 49)
+	{
+		mlx_destroy_window(&mlx, &wind);
+		printf("here\n");
+		exit(1);
+	}
+	return (0);
+}
+
 int main(int ac, char **av)
 {
 	void	*alhai;
@@ -166,13 +179,17 @@ int main(int ac, char **av)
 	{
 		jul(0,0);
 	}
-	
+
 	else
 		exit(1);
 
-	alhai = mlx_init();
+	alhai = mlx_init(); // same as mlx in document
 	i = 1;
-	alhai_win = mlx_new_window(alhai, w,h, "Hello alhai");
+	alhai_win = mlx_new_window(alhai, w,h, "Hello alhai"); // same as win in document
+
+
+	mlx_hook(alhai_win,2,1L<<0,close,NULL);
+
 	img.img = mlx_new_image(alhai, w, h);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
@@ -194,6 +211,7 @@ int main(int ac, char **av)
 		}
 		i++;
 	}
+
 	mlx_put_image_to_window(alhai, alhai_win, img.img, 0, 0);
 	mlx_loop(alhai);
 }
