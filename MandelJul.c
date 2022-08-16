@@ -2,20 +2,20 @@
 
 int jul(int i, int j)
 {
-	int w = 1080;
-	int h = 1080;
-	double x =  (i / (w * 1.0))* (4.0) - 2.0;
-	double y =  (j / (h * 1.0))* (4.0) - 2.0;
-	double x0 = 0.0;
-	double y0 = -1.0;
+	t_cor coor;
+	t_cor coor2;
+	coor.x =  (i / (W * 1.0))* (4.0) - 2.0;
+	coor.y =  (j / (H * 1.0))* (4.0) - 2.0;
+	coor2.x = 0.0;
+	coor2.y = -1.0;
 	int iteration = 0;
 	int max_iteration = 70;
 
-	while (x*x + y*y <= 2*2 && iteration < max_iteration)
+	while (coor.x * coor.x + coor.y * coor.y <= 2*2 && iteration < max_iteration)
 	{
-		double xtemp = x*x - y*y + x0;
-		y = 2*x*y + y0;
-		x = xtemp;
+		double xtemp = coor.x * coor.x - coor.y * coor.y + coor2.x;
+		coor.y = 2 * coor.x * coor.y + coor2.y;
+		coor.x = xtemp;
 		iteration = iteration + 1;
 	}
 	return (iteration);
@@ -23,20 +23,21 @@ int jul(int i, int j)
 
 int mand(int i, int j)
 {
-	int w = 1080;
-	int h = 1080;
-	double x0 =  (i / (w * 1.0))* (4.0) - 2.0;
-	double y0 =  (j / (h * 1.0))* (4.0) - 2.0;
-	double x = 0.0;
-	double y = 0.0;
+	t_cor coor;
+	t_cor coor2;
+
+	coor2.x =  (i / (W * 1.0))* (4.0) - 2.0;
+	coor2.y =  (j / (H * 1.0))* (4.0) - 2.0;
+	coor.x = 0.0;
+	coor.y = 0.0;
 	int iteration = 0;
 	int max_iteration = 70;
 
-	while (x*x + y*y <= 2*2 && iteration < max_iteration)
+	while (coor.x * coor.x + coor.y * coor.y <= 2*2 && iteration < max_iteration)
 	{
-		double xtemp = x*x - y*y + x0;
-		y = 2*x*y + y0;
-		x = xtemp;
+		double xtemp = coor.x *coor.x - coor.y * coor.y + coor2.x;
+		coor.y = 2 * coor.x *coor.y + coor2.y;
+		coor.x = xtemp;
 		iteration = iteration + 1;
 	}
 	return (iteration);

@@ -1,6 +1,9 @@
 #ifndef FRACT_OL
 # define FRACT_OL
 
+#define W 720
+#define H 720
+
 
 #include "minilibx/mlx.h"
 #include <stdio.h>
@@ -22,6 +25,20 @@ typedef struct	s_vars {
 	void	*win;
 }				t_vars;
 
+typedef struct s_mix
+{
+	t_data data;
+	t_vars vars;
+}			t_mix;
+
+typedef struct s_cor
+{
+	double		x;
+	double		y;
+}				t_cor;
+
+
+
 int	hue_to_rgb(int h);
 
 size_t	ft_strlen(const char *str);
@@ -34,6 +51,6 @@ int jul(int i, int j);
 
 int mand(int i, int j);
 
-int	close(int keycode, t_vars *vars);
+int	close(int keycode, t_mix *mix);
 
 #endif
