@@ -19,6 +19,7 @@ int main(int ac, char **av)
 	}
 	else
 		exit(1);
+	var_init(&mix);
 	mix.vars.mlx = mlx_init();
 	mix.vars.win = mlx_new_window(mix.vars.mlx, W, H, "Hello world!");
 	mlx_hook(mix.vars.win, 2, 1L<<0, close, &mix);
@@ -38,11 +39,12 @@ int main(int ac, char **av)
 			if (iteration == max_iteration)
 				alhai_mlx_pixel_put(&mix.data,i,j,0);
 			else
-				alhai_mlx_pixel_put(&mix.data,i,j,hue_to_rgb(((double)iteration/max_iteration)*360));
+				alhai_mlx_pixel_put(&mix.data,i,j, mix.color_change * iteration / 100);
 		    j++;
 		}
 		i++;
 	}
 	mlx_put_image_to_window(mix.vars.mlx, mix.vars.win, mix.data.img, 0, 0);
+	printf("%d - color ", mix.color_change);
 	mlx_loop(mix.vars.mlx);
 }

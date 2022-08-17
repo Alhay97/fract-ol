@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Tue Aug 16 13:55:25 2022
+# Make data base, printed on Wed Aug 17 19:41:53 2022
 
 # Variables
 
@@ -73,7 +72,7 @@ VSCODE_CODE_CACHE_PATH = /Users/alhayalhamely/Library/Application Support/Code/C
 # environment
 LOGNAME = alhayalhamely
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -158,6 +157,7 @@ FRAMEWORK = -L $(LIBX_DIR) -lmlx -framework OpenGL -framework AppKit
 LC_ALL = C
 # makefile (from `Makefile', line 3)
 LIBX = libmlx.a
+ 
 # environment
 SECURITYSESSIONID = 186e0
 # automatic
@@ -183,9 +183,9 @@ VSCODE_PID = 6953
 
 # Directories
 
-# . (device 16777223, inode 1018692): 13 files, no impossibilities.
+# . (device 16777223, inode 1018692): 15 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -198,7 +198,7 @@ VSCODE_PID = 6953
 
 # Files
 
-fract-ol: MandelJul.o color.o libft.o main.o
+fract-ol: MandelJul.o color.o init.o keyHook.o libft.o main.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
@@ -217,6 +217,12 @@ all: fract-ol
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+
+# Not a target:
+keyHook.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft.o:
@@ -301,9 +307,15 @@ clean:
 	
 
 # Not a target:
+init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 MandelJul.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 13:55:12
+#  Last modified 2022-08-16 14:44:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -316,7 +328,7 @@ main.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/37=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/41=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -328,6 +340,6 @@ main.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Aug 16 13:55:25 2022
+# Finished Make data base on Wed Aug 17 19:41:53 2022
 
  

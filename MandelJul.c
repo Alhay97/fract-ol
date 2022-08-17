@@ -21,13 +21,13 @@ int jul(int i, int j)
 	return (iteration);
 }
 
-int mand(int i, int j)
+int mand(int i, int j, double move_x, double move_y)
 {
 	t_cor coor;
 	t_cor coor2;
 
-	coor2.x =  (i / (W * 1.0))* (4.0) - 2.0;
-	coor2.y =  (j / (H * 1.0))* (4.0) - 2.0;
+	coor2.x =  (i / (W * 1.0))* (4.0) - move_x;
+	coor2.y =  (j / (H * 1.0))* (4.0) - move_y;
 	coor.x = 0.0;
 	coor.y = 0.0;
 	int iteration = 0;

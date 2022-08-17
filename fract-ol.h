@@ -29,6 +29,8 @@ typedef struct s_mix
 {
 	t_data data;
 	t_vars vars;
+	int 	max_iteration;
+	int		color_change;
 }			t_mix;
 
 typedef struct s_cor
@@ -36,8 +38,6 @@ typedef struct s_cor
 	double		x;
 	double		y;
 }				t_cor;
-
-
 
 int	hue_to_rgb(int h);
 
@@ -52,5 +52,9 @@ int jul(int i, int j);
 int mand(int i, int j);
 
 int	close(int keycode, t_mix *mix);
+
+void var_init(t_mix *mix);
+
+int shifter(int color, int mod);
 
 #endif
