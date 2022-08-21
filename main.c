@@ -11,7 +11,7 @@ int main(int ac, char **av)
 
 	if (!ft_strncmp(av[1],"mandelbrot",ft_strlen(av[1])))
 	{
-		mand(0,0);
+		mand(0,0,2,2);
 	}
 	else if (!ft_strncmp(av[1],"julie",ft_strlen(av[1])))
 	{
@@ -33,7 +33,7 @@ int main(int ac, char **av)
 		while (j < H)
 		{
 			if (!ft_strncmp(av[1],"mandelbrot",ft_strlen(av[1])))
-				iteration = mand(i,j);
+				iteration = mand(i,j,mix.cor.mo_x, mix.cor.mo_y);
 			else if (!ft_strncmp(av[1],"julie",ft_strlen(av[1])))
 				iteration = jul(i,j);
 			if (iteration == max_iteration)
@@ -44,6 +44,7 @@ int main(int ac, char **av)
 		}
 		i++;
 	}
+	mlx_mouse_hook(mix.vars.win, zoom, &mix.cor);
 	mlx_put_image_to_window(mix.vars.mlx, mix.vars.win, mix.data.img, 0, 0);
 	printf("%d - color ", mix.color_change);
 	mlx_loop(mix.vars.mlx);
