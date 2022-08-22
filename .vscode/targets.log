@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Sun Aug 21 18:46:45 2022
+# Make data base, printed on Mon Aug 22 16:29:05 2022
 
 # Variables
 
@@ -40,11 +40,13 @@ VSCODE_CWD = /
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # environment
+LaunchInstanceID = D4CED095-86E3-48AB-BE0A-CFD54924D1B6
+# environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.U8ZVPioXCL/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.QufaARy2lp/Listeners
 # automatic
 %F = $(notdir $%)
 # makefile (from `Makefile', line 6)
@@ -64,7 +66,7 @@ VSCODE_CODE_CACHE_PATH = /Users/alhayalhamely/Library/Application Support/Code/C
 # environment
 LOGNAME = alhayalhamely
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -131,6 +133,9 @@ FRAMEWORK = -L $(LIBX_DIR) -lmlx -framework OpenGL -framework AppKit
 LC_ALL = C
 # makefile (from `Makefile', line 3)
 LIBX = libmlx.a
+ 
+# environment
+SECURITYSESSIONID = 18717
 # automatic
 ^F = $(notdir $^)
 # default
@@ -142,9 +147,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1671
+VSCODE_PID = 3934
 # variable set hash-table stats:
-# Load=66/1024=6%, Rehash=0, Collisions=5/94=5%
+# Load=68/1024=7%, Rehash=0, Collisions=5/99=5%
 
 # Pattern-specific Variable Values
 
@@ -152,9 +157,9 @@ VSCODE_PID = 1671
 
 # Directories
 
-# . (device 16777224, inode 1018692): 22 files, no impossibilities.
+# . (device 16777224, inode 1018692): 21 files, no impossibilities.
 
-# 22 files, no impossibilities in 1 directories.
+# 21 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -169,65 +174,35 @@ VSCODE_PID = 1671
 
 fract-ol: MandelJul.o color.o init.o keyHook.o libft.o main.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-18 17:12:33
+#  Last modified 2022-08-22 16:11:15
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 #  commands to execute (from `Makefile', line 14):
 	@$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORK) -o $(NAME)
 	
-
-# Not a target:
-init.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-16 17:57:27
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: fract-ol
 #  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 
 # Not a target:
-main.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-18 17:12:29
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+keyHook.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-keyHook.o: keyHook.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `keyHook'
-#  Last modified 2022-08-18 17:12:32
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 11):
-	$(CC) -g  -Imlx -c $< -o $@
-	
-
-libft.o: libft.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `libft'
-#  Last modified 2022-08-18 17:12:32
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 11):
-	$(CC) -g  -Imlx -c $< -o $@
-	
+# Not a target:
+libft.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -247,11 +222,27 @@ Makefile:
 MandelJul.o: MandelJul.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `MandelJul'
-#  Last modified 2022-08-18 17:12:32
+#  Last modified 2022-08-22 16:11:14
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := MandelJul.o
+# automatic
+# % := 
+# automatic
+# * := MandelJul
+# automatic
+# + := MandelJul.c
+# automatic
+# | := 
+# automatic
+# < := MandelJul.c
+# automatic
+# ^ := MandelJul.c
+# automatic
+# ? := MandelJul.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
 #  commands to execute (from `Makefile', line 11):
 	$(CC) -g  -Imlx -c $< -o $@
 	
@@ -264,35 +255,11 @@ fclean: clean
 	rm -rf ${NAME} fract-ol
 	
 
-color.o: color.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `color'
-#  Last modified 2022-08-18 17:12:32
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 11):
-	$(CC) -g  -Imlx -c $< -o $@
-	
-
 # Not a target:
-keyHook.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-17 20:03:22
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-libft.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-16 13:55:12
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+color.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -313,51 +280,29 @@ clean:
 	rm -rf ${OBJS}
 	
 
-init.o: init.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `init'
-#  Last modified 2022-08-18 17:12:32
-#  File has been updated.
-#  Successfully updated.
- 
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 11):
-	$(CC) -g  -Imlx -c $< -o $@
-	
+# Not a target:
+init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 MandelJul.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-17 20:02:44
+#  Last modified 2022-08-22 16:25:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-main.o: main.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `main'
-#  Last modified 2022-08-18 17:12:32
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 11):
-	$(CC) -g  -Imlx -c $< -o $@
-	
 
 # Not a target:
-color.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-18 17:10:50
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=20/1024=2%, Rehash=0, Collisions=0/61=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/41=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -369,6 +314,6 @@ color.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Aug 21 18:46:45 2022
+# Finished Make data base on Mon Aug 22 16:29:05 2022
 
  

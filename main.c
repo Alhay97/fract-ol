@@ -1,51 +1,64 @@
 #include "minilibx/mlx.h"
 #include "fract-ol.h"
 
-int main(int ac, char **av)
+int	fractal(t_mix *mix)
 {
-	int		i;
-	int		j;
+	if (mix->fractal == 1)
+		return (mand(mix));
+	else if (mix->fractal == 2)
+		return (jul(mix));
+	return (0);
+}
+
+void	draw_image(t_mix *mix)
+{
+	mix->cor.i = 1;
 	int iteration = 0;
 	int max_iteration = 70;
+	while (mix->cor.i < W)
+	{
+		mix->cor.j = 0;
+		while (mix->cor.j < H)
+		{
+			iteration = fractal(mix);
+			if (iteration == max_iteration)
+				alhai_mlx_pixel_put(&mix->data,mix->cor.i,mix->cor.j,0);
+			else
+				alhai_mlx_pixel_put(&mix->data,mix->cor.i,mix->cor.j, mix->color_change * iteration / 100);
+		    mix->cor.j++;
+		}
+		mix->cor.i++;
+	}
+}
+
+int loop_hook(t_mix *mix)
+{
+	draw_image(mix);
+	mlx_put_image_to_window(mix->vars.mlx, mix->vars.win, mix->data.img, 0, 0);
+	return (0);
+}
+
+int main(int ac, char **av)
+{
 	t_mix 	mix;
 
 	if (!ft_strncmp(av[1],"mandelbrot",ft_strlen(av[1])))
 	{
-		mand(0,0,2,2);
+		mix.fractal = 1;
 	}
 	else if (!ft_strncmp(av[1],"julie",ft_strlen(av[1])))
 	{
-		jul(0,0);
+		mix.fractal = 2;
 	}
 	else
 		exit(1);
-	var_init(&mix);
 	mix.vars.mlx = mlx_init();
 	mix.vars.win = mlx_new_window(mix.vars.mlx, W, H, "Hello world!");
-	mlx_hook(mix.vars.win, 2, 1L<<0, close, &mix);
 	mix.data.img = mlx_new_image(mix.vars.mlx, W, H);
 	mix.data.addr = mlx_get_data_addr(mix.data.img, &mix.data.bits_per_pixel, &mix.data.line_length,
 			&mix.data.endian);
-	i = 1;
-	while (i < W)
-	{
-		j = 0;
-		while (j < H)
-		{
-			if (!ft_strncmp(av[1],"mandelbrot",ft_strlen(av[1])))
-				iteration = mand(i,j,mix.cor.mo_x, mix.cor.mo_y);
-			else if (!ft_strncmp(av[1],"julie",ft_strlen(av[1])))
-				iteration = jul(i,j);
-			if (iteration == max_iteration)
-				alhai_mlx_pixel_put(&mix.data,i,j,0);
-			else
-				alhai_mlx_pixel_put(&mix.data,i,j, mix.color_change * iteration / 100);
-		    j++;
-		}
-		i++;
-	}
-	mlx_mouse_hook(mix.vars.win, zoom, &mix.cor);
-	mlx_put_image_to_window(mix.vars.mlx, mix.vars.win, mix.data.img, 0, 0);
-	printf("%d - color ", mix.color_change);
+	var_init(&mix);
+	mlx_hook(mix.vars.win, 2, 1L<<0, close, &mix);
+	mlx_loop_hook(mix.vars.mlx, loop_hook, &mix);
 	mlx_loop(mix.vars.mlx);
 }

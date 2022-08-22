@@ -29,6 +29,8 @@ typedef struct s_cor
 {
 	double		x;
 	double		y;
+	int i;
+	int j;
 	double a_zoom;
 	double	mo_x;
 	double	mo_y;
@@ -39,6 +41,7 @@ typedef struct s_mix
 	t_data data;
 	t_vars vars;
 	t_cor  cor;
+	int		fractal;
 	int 	max_iteration;
 	int		color_change;
 }			t_mix;
@@ -51,9 +54,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	alhai_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-int jul(int i, int j);
-
-int mand(int i, int j, double move_x, double move_y);
 
 int	close(int keycode, t_mix *mix);
 
@@ -62,5 +62,9 @@ void var_init(t_mix *mix);
 int shifter(int color, int mod);
 
 int	zoom(int keycode , int x, int y, t_mix *mix);
+
+int jul(t_mix *mix);
+
+int mand(t_mix *mix);
 
 #endif
