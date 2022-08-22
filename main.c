@@ -12,16 +12,17 @@ int	fractal(t_mix *mix)
 
 void	draw_image(t_mix *mix)
 {
+	int	iteration;
+
 	mix->cor.i = 1;
-	int iteration = 0;
-	int max_iteration = 70;
+	iteration = 0;
 	while (mix->cor.i < W)
 	{
 		mix->cor.j = 0;
 		while (mix->cor.j < H)
 		{
 			iteration = fractal(mix);
-			if (iteration == max_iteration)
+			if (iteration == mix->max_iteration)
 				alhai_mlx_pixel_put(&mix->data,mix->cor.i,mix->cor.j,0);
 			else
 				alhai_mlx_pixel_put(&mix->data,mix->cor.i,mix->cor.j, mix->color_change * iteration / 100);
