@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keyHook.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/22 20:35:28 by aalhamel          #+#    #+#             */
+/*   Updated: 2022/08/22 21:29:02 by aalhamel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minilibx/mlx.h"
 #include "fract-ol.h"
 
@@ -28,7 +40,17 @@ int	close(int keycode, t_mix *mix)
 	return (0);
 }
 
-int mouse(int keycode, t_mix *mix)
+int mouse(int keycode, int x, int y, t_mix *mix)
 {
-
+	printf("mouse x - %d\n", x);
+	printf("mouse y - %d\n", y);
+	if (keycode == 4)
+	{
+		mix->cor.a_zoom *= 2;
+		mix->cor.mo_x += 1.70 * (mix->cor.i - W / 2) / (0.365 * W * mix->cor.a_zoom);
+		mix->cor.mo_y += (mix->cor.j - H / 2) / (0.25 * H * mix->cor.a_zoom);
+	}
+	else if (keycode == 5)
+		mix->cor.a_zoom /= 2;
+	return (0);
 }

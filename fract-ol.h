@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fract-ol.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/22 20:35:21 by aalhamel          #+#    #+#             */
+/*   Updated: 2022/08/22 21:27:01 by aalhamel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACT_OL
 # define FRACT_OL
 
@@ -66,5 +78,7 @@ int	zoom(int keycode , int x, int y, t_mix *mix);
 int jul(t_mix *mix);
 
 int mand(t_mix *mix);
+
+int mouse(int keycode, int x, int y, t_mix *mix);
 
 #endif

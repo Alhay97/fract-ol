@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/22 20:35:34 by aalhamel          #+#    #+#             */
+/*   Updated: 2022/08/22 21:27:17 by aalhamel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minilibx/mlx.h"
 #include "fract-ol.h"
 
@@ -60,6 +72,7 @@ int main(int ac, char **av)
 			&mix.data.endian);
 	var_init(&mix);
 	mlx_hook(mix.vars.win, 2, 1L<<0, close, &mix);
+	mlx_mouse_hook(mix.vars.win, mouse, &mix);
 	mlx_loop_hook(mix.vars.mlx, loop_hook, &mix);
 	mlx_loop(mix.vars.mlx);
 }
