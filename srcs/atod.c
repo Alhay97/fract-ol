@@ -1,5 +1,16 @@
-#include "fract-ol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atod.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/23 16:26:39 by aalhamel          #+#    #+#             */
+/*   Updated: 2022/08/23 16:27:09 by aalhamel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "fractol.h"
 
 int	is_invalid(char *n)
 {
@@ -69,7 +80,6 @@ int	ft_atoi(const char *str)
 	}
 	return (number);
 }
-
 
 double	ft_atod(char *str)
 {

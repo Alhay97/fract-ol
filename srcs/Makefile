@@ -1,4 +1,4 @@
-NAME		=	fract-ol
+NAME		=	fractol
 LIBX_DIR	=	minilibx
 LIBX		=	libmlx.a
 FRAMEWORK	=	-L $(LIBX_DIR) -lmlx -framework OpenGL -framework AppKit
