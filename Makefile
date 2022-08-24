@@ -5,10 +5,10 @@ FRAMEWORK	=	-L $(LIBX_DIR) -lmlx -framework OpenGL -framework AppKit
 SRCS = $(wildcard *.c)
 OBJS		=	$(SRCS:%c=%o)
 CC			=	gcc
-CFLAGS		=	-Ofast
+CFLAGS		=	-Wall -Wextra -Werror
 
 %.o : %.c
-	$(CC) -g  -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME) : $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORK) -o $(NAME)

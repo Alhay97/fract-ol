@@ -59,11 +59,11 @@ void	helper(int ac, char **av, t_mix *mix)
 		ft_error("invalid amount of arguments");
 		exit(1);
 	}
-	if (!ft_strncmp(av[1], "mandelbrot", ft_strlen(av[1])))
+	if (!ft_strncmp(av[1], "mandelbrot", ft_strlen("mandelbrot")))
 	{
 		mix->fractal = 1;
 	}
-	else if (!ft_strncmp(av[1], "julie", ft_strlen(av[1])))
+	else if (!ft_strncmp(av[1], "julie", ft_strlen("julie")))
 	{
 		mix->fractal = 2;
 		if (ac != 4)

@@ -1,6 +1,12 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/alhayalhamely/Desktop/fract-ol'
+gcc -Wall -Wextra -Werror -Imlx -c MandelJul.c -o MandelJul.o
+gcc -Wall -Wextra -Werror -Imlx -c atod.c -o atod.o
+gcc -Wall -Wextra -Werror -Imlx -c error.c -o error.o
+gcc -Wall -Wextra -Werror -Imlx -c init.c -o init.o
+gcc -Wall -Wextra -Werror -Imlx -c keyHook.c -o keyHook.o
+gcc -Wall -Wextra -Werror -Imlx -c libft.c -o libft.o
+gcc -Wall -Wextra -Werror -Imlx -c main.c -o main.o
+gcc -Wall -Wextra -Werror MandelJul.o atod.o error.o init.o keyHook.o libft.o main.o -L minilibx -lmlx -framework OpenGL -framework AppKit -o fractol
 make: Leaving directory `/Users/alhayalhamely/Desktop/fract-ol'
  
-make: *** No targets specified and no makefile found.  Stop.
-

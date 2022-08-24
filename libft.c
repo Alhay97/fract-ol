@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:35:31 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/08/23 16:22:35 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:59:32 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	while (i < n - 1 && s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
 		i++;
+	if ((n - 1) != i)
+		return (1);
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }

@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Wed Aug 24 16:01:03 2022
+# Make data base, printed on Wed Aug 24 16:59:27 2022
 
 # Variables
 
@@ -29,8 +29,10 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile
-MAKEFILE_LIST := 
+# makefile (from `Makefile', line 8)
+CFLAGS = -Wall -Wextra -Werror
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
@@ -47,6 +49,8 @@ ELECTRON_RUN_AS_NODE = 1
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.SOX7co19t3/Listeners
 # automatic
 %F = $(notdir $%)
+# makefile (from `Makefile', line 6)
+OBJS = $(SRCS:%c=%o)
 # environment
 PWD = /Users/alhayalhamely/Desktop/fract-ol
 # environment
@@ -75,14 +79,22 @@ XPC_FLAGS = 0x0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
+# makefile (from `Makefile', line 5)
+SRCS = $(wildcard *.c)
 # environment
 SHLVL = 1
+# makefile (from `Makefile', line 7)
+CC = gcc
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = alhayalhamely
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := fractol
+# makefile (from `Makefile', line 1)
+NAME = fractol
+# makefile (from `Makefile', line 2)
+LIBX_DIR = minilibx
 # environment
 LESS = -R
 # automatic
@@ -119,10 +131,14 @@ COMMAND_MODE = unix2003
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
+# makefile (from `Makefile', line 4)
+FRAMEWORK = -L $(LIBX_DIR) -lmlx -framework OpenGL -framework AppKit
 # environment
 PAGER = less
 # environment
 LC_ALL = C
+# makefile (from `Makefile', line 3)
+LIBX = libmlx.a
 # automatic
 ^F = $(notdir $^)
 # default
@@ -136,7 +152,7 @@ LANG = C
 # environment
 VSCODE_PID = 3542
 # variable set hash-table stats:
-# Load=62/1024=6%, Rehash=0, Collisions=1/83=1%
+# Load=70/1024=7%, Rehash=0, Collisions=5/98=5%
 
 # Pattern-specific Variable Values
 
@@ -144,24 +160,82 @@ VSCODE_PID = 3542
 
 # Directories
 
-# . (device 16777226, inode 1366876): 6 files, no impossibilities.
+# . (device 16777226, inode 1366876): 24 files, no impossibilities.
 
-# 6 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.c
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
+fractol: MandelJul.o atod.o error.o init.o keyHook.o libft.o main.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-24 16:57:31
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 14):
+	@$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORK) -o $(NAME)
+	
+
 # Not a target:
-all:
+init.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-24 16:15:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: fractol
 #  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-24 16:53:27
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+keyHook.o: keyHook.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `keyHook'
+#  Last modified 2022-08-24 16:57:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+
+libft.o: libft.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `libft'
+#  Last modified 2022-08-24 16:57:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
 
 # Not a target:
 .SUFFIXES:
@@ -171,55 +245,159 @@ all:
 
 # Not a target:
 Makefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-08-24 16:54:04
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+atod.o: atod.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `atod'
+#  Last modified 2022-08-24 16:57:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+
+error.o: error.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `error'
+#  Last modified 2022-08-24 16:57:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+
+MandelJul.o: MandelJul.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `MandelJul'
+#  Last modified 2022-08-24 16:57:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 22):
+	rm -rf ${NAME} fract-ol
+	
+
+# Not a target:
+keyHook.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-24 16:37:29
+#  File has been updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-makefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
+libft.c:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-08-24 16:57:23
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 19):
+	rm -rf ${OBJS}
+	
+
 # Not a target:
-GNUmakefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
+atod.c:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-08-24 16:02:05
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+# Not a target:
+error.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-24 16:02:05
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+init.o: init.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `init'
+#  Last modified 2022-08-24 16:57:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+
+# Not a target:
+MandelJul.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-24 16:02:05
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+main.o: main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `main'
+#  Last modified 2022-08-24 16:57:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 11):
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/17=0%
+# Load=22/1024=2%, Rehash=0, Collisions=0/67=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
 
 # No general (`VPATH' variable) search path.
 
-# # of strings in strcache: 0
-# # of strcache buffers: 0
-# strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
-# strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Aug 24 16:01:03 2022
+# Finished Make data base on Wed Aug 24 16:59:27 2022
 
  
-make: *** No rule to make target `all'.  Stop.
-
