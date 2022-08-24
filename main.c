@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:35:34 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/08/23 16:45:25 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:49:11 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	main(int ac, char **av)
 			&mix.data.endian);
 	var_init(&mix);
 	mlx_hook(mix.vars.win, 2, 1L << 0, ft_hook, &mix);
+	mlx_hook(mix.vars.win, 17, 1L << 5, clox, &mix);
 	mlx_mouse_hook(mix.vars.win, mouse, &mix);
 	mlx_loop_hook(mix.vars.mlx, loop_hook, &mix);
 	mlx_loop(mix.vars.mlx);

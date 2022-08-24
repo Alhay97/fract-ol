@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyHook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:35:28 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/08/24 17:02:13 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:48:12 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ void	hook(int keycode, t_mix *mix)
 		mix->color_change = 0xb30000;
 }
 
+int	clox(t_mix *mix)
+{
+	mlx_destroy_window(mix->vars.mlx, mix->vars.win);
+	mlx_destroy_image(mix->vars.mlx, mix->data.img);
+	exit(0);
+}
+
 int	ft_hook(int keycode, t_mix *mix)
 {
 	if (keycode == 53)
@@ -49,12 +56,15 @@ int	ft_hook(int keycode, t_mix *mix)
 		mix->cor.mo_y += 0.05 / mix->cor.a_zoom;
 	hook(keycode, mix);
 	return (0);
-}xs
+}
 
 int	mouse(int keycode, int x, int y, t_mix *mix)
 {
-	if (keycode == 5)
+	(void)x;
+	(void)y;
+	if (keycode == 4)
 	{
+		printf("hello1");
 		mix->cor.a_zoom *= 2;
 		mix->cor.mo_x += 1.70 * (mix->cor.i - W / 2)
 			/ (0.365 * W * mix->cor.a_zoom);

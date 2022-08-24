@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:35:21 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/08/24 16:38:33 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:47:43 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	hook(int keycode, t_mix *mix);
 int		ft_hook(int keycode, t_mix *mix);
 
 void	var_init(t_mix *mix);
+
+int		clox(t_mix *mix);
 
 int		shifter(int color, int mod);
 
