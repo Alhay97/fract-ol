@@ -6,14 +6,14 @@
 /*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:35:28 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/08/24 16:29:48 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:37:29 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minilibx/mlx.h"
 #include "fractol.h"
 
-void hook(int keycode, t_mix *mix)
+void	hook(int keycode, t_mix *mix)
 {
 	if (keycode == 24)
 		mix->cor.a_zoom *= 2;
@@ -23,6 +23,12 @@ void hook(int keycode, t_mix *mix)
 		mix->max_iteration += 5;
 	if (keycode == 31)
 		mix->max_iteration -= 5;
+	if (keycode == 18)
+		mix->color_change = 0x0040ff;
+	if (keycode == 19)
+		mix->color_change = 0x880808;
+	if (keycode == 20)
+		mix->color_change = 0xb30000;
 }
 
 int	ft_hook(int keycode, t_mix *mix)
@@ -33,17 +39,18 @@ int	ft_hook(int keycode, t_mix *mix)
 		mlx_destroy_image(mix->vars.mlx, mix->data.img);
 		exit(0);
 	}
-	if (keycode == 124)
+	if (keycode == 123)
 		mix->cor.mo_x += 0.05 / mix->cor.a_zoom;
-	else if (keycode == 123)
+	else if (keycode == 124)
 		mix->cor.mo_x -= 0.05 / mix->cor.a_zoom;
-	else if (keycode == 126)
-		mix->cor.mo_y -= 0.05 / mix->cor.a_zoom;
 	else if (keycode == 125)
+		mix->cor.mo_y -= 0.05 / mix->cor.a_zoom;
+	else if (keycode == 126)
 		mix->cor.mo_y += 0.05 / mix->cor.a_zoom;
 	hook(keycode, mix);
 	return (0);
 }
+
 int	mouse(int keycode, int x, int y, t_mix *mix)
 {
 	printf("mouse x - %d\n", x);

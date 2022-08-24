@@ -1,11 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/alhayalhamely/Desktop/fract-ol'
-gcc -g  -Imlx -c MandelJul.c -o MandelJul.o
-gcc -g  -Imlx -c color.c -o color.o
-gcc -g  -Imlx -c init.c -o init.o
-gcc -g  -Imlx -c keyHook.c -o keyHook.o
-gcc -g  -Imlx -c libft.c -o libft.o
-gcc -g  -Imlx -c main.c -o main.o
-gcc -Ofast MandelJul.o color.o init.o keyHook.o libft.o main.o -L minilibx -lmlx -framework OpenGL -framework AppKit -o fract-ol
 make: Leaving directory `/Users/alhayalhamely/Desktop/fract-ol'
  
+make: *** No targets specified and no makefile found.  Stop.
+
