@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:35:28 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/08/24 16:37:29 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:02:13 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ int	ft_hook(int keycode, t_mix *mix)
 		mix->cor.mo_y += 0.05 / mix->cor.a_zoom;
 	hook(keycode, mix);
 	return (0);
-}
+}xs
 
 int	mouse(int keycode, int x, int y, t_mix *mix)
 {
-	printf("mouse x - %d\n", x);
-	printf("mouse y - %d\n", y);
 	if (keycode == 5)
 	{
 		mix->cor.a_zoom *= 2;
